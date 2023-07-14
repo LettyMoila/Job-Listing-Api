@@ -4,11 +4,10 @@
             "previewLimit": 50,
             "server": "localhost",
             "port": 5432,
-            "askForPassword": true,
             "driver": "PostgreSQL",
-            "database": "job_konnect",
-            "username": "postgres",
-            "name": "database"
+            "name": "job_konnect",
+            "database": "zanele",
+            "username": "zanele"
         }
     ]
 }
