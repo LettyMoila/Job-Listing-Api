@@ -1,5 +1,5 @@
 CREATE TABLE "client_profile" (
-  "id" integer PRIMARY KEY,
+  "id" integer SERIAL PRIMARY KEY AUTO_INCREMENT,
   "first_name" varchar,
   "last_name" varchar,
   "email" varchar,
@@ -36,19 +36,52 @@ CREATE TABLE "client_skills" (
 );
 
 CREATE TABLE "skill_set" (
-  "id" integer,
+  "id" integer SERIAL AUTO_INCREMENT,
   "skill_set_name" varchar
 );
 
 CREATE TABLE "company" (
-  "id" integer PRIMARY KEY,
+  "id" integer SERIAL PRIMARY KEY AUTO_INCREMENT,
   "name" varchar,
   "description" varchar,
   "website" varchar
 );
 
+INSERT INTO company (id, name, description, website)
+VALUES (
+    1,
+    'Lexis Nexis',
+    'Solar Energy Company',
+    'lexisnexis.co.za'
+  );
+
+INSERT INTO company (id, name, description, website)
+VALUES (
+    2,
+    'Vodacom',
+    'Global network company',
+    'vodacom.co.za'
+  );
+
+INSERT INTO company (id, name, description, website)
+VALUES (
+    3,
+    'Apple',
+    'Digital Technology Company',
+    'apple.co'
+  );
+
+INSERT INTO company (id, name, description, website)
+VALUES (
+    4,
+    'ILab',
+    'Gaming company',
+    'i-lab_tech.co'
+  );
+
+
 CREATE TABLE "job_post" (
-  "id" integer PRIMARY KEY,
+  "id" integer PRIMARY KEY SERIAL AUTO_INCREMENT,
   "company_id" integer,
   "role" varchar,
   "description" varchar,
@@ -56,6 +89,97 @@ CREATE TABLE "job_post" (
   "created_at" timestamp,
   "closed_at" timestamp
 );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    1,
+    1,
+    'Web Developer',
+    'Looking for a junior developer',
+    'Durban'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    2,
+    2,
+    'Technician',
+    'Graduate Program',
+    'JHB'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    3,
+    3,
+    'IOS Developer',
+    'Looking for a junior IOS Developer',
+    'Cape Town'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    4,
+    4,
+    'Quality Analyst',
+    'Internship',
+    'Pretoria'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    5,
+    1,
+    'Web Developer',
+    'Looking for a junior developer',
+    'Durban'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    6,
+    1,
+    'Web Developer',
+    'Looking for a junior developer',
+    'Durban'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    8,
+    1,
+    'Web Developer',
+    'Looking for a junior developer',
+    'Durban'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    9,
+    1,
+    'Web Developer',
+    'Looking for a junior developer',
+    'Durban'
+  );
+
+INSERT INTO job_post (id, company_id, role, description, location
+  )
+VALUES (
+    10,
+    1,
+    'Web Developer',
+    'Looking for a junior developer',
+    'Durban'
+  );
+
 
 CREATE TABLE "job_post_skill_set" (
   "skill_set_id" integer,
