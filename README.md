@@ -14,3 +14,11 @@ It corresponds to this https://github.com/ANDILE805/job-listing-girlscode
 ## To install required packages (requirements.txt)
 
 ```python -m pip install -r requirements.txt```
+
+## Contributors
+- [Murendeni Mukwevho](https://github.com/mukwevhom) - Facilitator
+- [Zanele Manyathi](https://github.com/zmanyath) - Collaborator
+- [Letty Moila](https://github.com/LettyMoila) - Collaborator
+- [Andile Mbatha](https://github.com/ANDILE805) - Collaborator
+- [Halala Ndwandwe](https://github.com/HalalaNdwandwe) - Collaborator
+
