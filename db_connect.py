@@ -33,3 +33,20 @@ class db_connect:
         connection.close()
 
         return rows
+
+    def insert(self, columns, values):
+        connection = self.pool.getconn()
+        cursor = connection.cursor()
+
+        sql = f"INSERT INTO {self.table} ({columns}) VALUES ({values}) RETURNING id;"
+
+        cursor.execute(sql)
+        
+        curr_id = cursor.fetchone()[0]
+
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
+        return curr_id
