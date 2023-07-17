@@ -9,7 +9,7 @@ It corresponds to this https://github.com/ANDILE805/job-listing-girlscode
 
 ## To install Flask run
 
-```python -m pip install Flask``
+```python -m pip install Flask```
 
 ## To install required packages (requirements.txt)
 

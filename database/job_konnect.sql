@@ -13,7 +13,6 @@ CREATE TABLE "client_experience" (
   "current_job" varchar,
   "start_date" timestamp,
   "end_date" timestamp,
-  "job_title" varchar,
   "company_name" varchar,
   "job_location_city" varchar,
   "job_location_state" varchar,
@@ -52,7 +51,7 @@ CREATE TABLE "job_post" (
   "id" integer PRIMARY KEY,
   "company_id" integer,
   "role" varchar,
-  "decription" varchar,
+  "description" varchar,
   "location" varchar,
   "created_at" timestamp,
   "closed_at" timestamp
