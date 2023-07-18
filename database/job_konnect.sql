@@ -193,6 +193,24 @@ CREATE TABLE "job_post_activity" (
   "apply_date" date
 );
 
+CREATE TABLE job_location (
+  id SERIAL PRIMARY KEY,
+  street_add TEXT NOT NULL,
+  city TEXT NOT NULL,
+  province TEXT NOT NULL,
+  country TEXT NOT NULL,
+  code INT NOT NULL,
+  job_id INT NOT NULL,
+  FOREIGN KEY(job_id) REFERENCES job_post(id)
+);
+
+CREATE TABLE job_type (
+  id SERIAL PRIMARY KEY,
+  job_type TEXT NOT NULL,
+  job_id INT NOT NULL,
+  FOREIGN KEY(job_id) REFERENCES job_post(id)
+);
+
 ALTER TABLE "client_profile" ADD FOREIGN KEY ("id") REFERENCES "job_post_activity" ("client_id");
 
 ALTER TABLE "client_experience" ADD FOREIGN KEY ("client_id") REFERENCES "client_profile" ("id");

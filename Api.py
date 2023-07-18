@@ -147,3 +147,56 @@ def skill_set():
     else:
         return 'No information about Skill Sets at the moment'
     
+#JOB LOCATION ROUTE 
+@app.route('/job_location')
+def location_route():
+    temp_location = []
+    
+    location_instance = db_connect('job_location')
+    
+    rows = location_instance.select()
+    
+    for row in rows:
+        location = {
+            'id': row[0],
+            'name': row[1],
+            'description': row[2],
+            'website': row[3]
+        }
+        
+        temp_location.append(location)
+        
+        location_dict = {
+            'job_location': temp_location
+        }
+        
+        return location_dict
+    else:
+        return 'No information about job location at the moment'
+    
+#JOB TYPE ROUTE 
+@app.route('/job_type')
+def job_type_route():
+    jtype = []
+    
+    job_type_instance = db_connect('job_type')
+    
+    rows = job_type_instance.select()
+    
+    for row in rows:
+        typeJob = {
+            "id" : row[0],
+            "job_type ": row[1],
+            "job_id": row[2]
+        }
+        
+        jtype.append(typeJob)
+        
+        type_dict = {
+            'job_type': jtype
+        }
+        
+        return type_dict
+    else:
+        return 'No information about job type at the moment'
+    
