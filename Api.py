@@ -1,5 +1,7 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, request
 from flask_cors import CORS
+from datetime import datetime
+import json
 
 import config
 
@@ -12,39 +14,47 @@ CORS(app)
 def main():
     return "Job Listing API"
 
-
-# JOB POST ROUTE
-@app.route('/job_post')
+ 
+@app.route('/job_post/', methods=['GET', 'POST'])
 def job_post_route():
+    data = request.form
     job_post = []
     
     table_instance = db_connect('job_post')
     
     rows = table_instance.select()
-    
-    for row in rows:
-        jp_table = {
-            'id': row[0],
-            'company_id': row[1],
-            'role': row[2],
-            'description': row[3],
-            'location': row[4],
-            'created_at': row[5],
-            'closed_at': row[6]
-        }
+    if request.method == "GET":
+        for row in rows:
+            jp_table = {
+                'id': row[0],
+                'company_id': row[1],
+                'role': row[2],
+                'description': row[3],
+                'location': row[4],
+                'created_at': row[5],
+                'closed_at': row[6]
+            }
+            
+            job_post.append(jp_table)
+            
+            jp_dictionary = {
+                'job_post': job_post
+            }
+            
+            return jp_dictionary
+    elif request.method == "POST":
+        company_id = 1
+        id = 11
+        role = request.form['tittle']
+        location = request.form['location']
+        description = request.form['description']
+        created_at = datetime.now()
+        table_instance.insert("id ,company_id, role, location, description, created_at, closed_at", f"'{id}','{company_id}','{role}','{description}', '{location}','{created_at}','{closed_at}'")
         
-        job_post.append(jp_table)
-        
-        jp_dictionary = {
-            'job_post': job_post
-        }
-        
-        return jp_dictionary
-    else:
-        return 'No information about Job Posts at the moment'
+        return 'success'
 
-# JOB POST ACTIVITY ROUTE
-@app.route('/job_post_activity') #TO FIX
+
+@app.route('/job_post_activity')
 def job_post_activity_route():
     jp_activity = []
     
@@ -70,9 +80,7 @@ def job_post_activity_route():
         return 'No information about Job Posts Activity at the moment'
         
 
-
-#COMPANY ROUTE 
-@app.route('/company')
+@app.route('/company/', methods=['GET', 'POST'])
 def company_route():
     c_ompany = []
     
@@ -80,23 +88,28 @@ def company_route():
     
     rows = table_instance.select()
     
-    for row in rows:
-        company_table = {
-            'id': row[0],
-            'name': row[1],
-            'description': row[2],
-            'website': row[3]
-        }
-        
-        c_ompany.append(company_table)
-        
-        company_dict = {
-            'company': c_ompany
-        }
-        
-        return company_dict
-    else:
-        return 'No information about Companies at the moment'
+    if request.method == 'GET':
+        for row in rows:
+            company_table = {
+                'id': row[0],
+                'name': row[1],
+                'description': row[2],
+                'website': row[3]
+            }
+            
+            c_ompany.append(company_table)
+            
+            company_dict = {
+                'company': c_ompany
+            }
+            
+            return company_dict
+    elif request.method == 'POST':
+        name = request.form['name']
+        description = request.form['description']
+        website = request.form['website']
+        table_instance.insert("name, description, website", f"'{name}','{description}', '{website}'")
+        return redirect(url_for('company_route'))
 
 #JOB POST SKILL SET
 @app.route('/job_post_skill_set') #TO FIX >> add client id and skill set id
@@ -123,9 +136,11 @@ def job_post_skill_set():
         return jp_skill_set_dict
     else:
         return 'No information about Job Post Skill Sets at the moment'
+    
+    
 #SKILL SET ROUTE
-@app.route('/skill_set') 
-def skill_set():
+@app.route('/skill_set/', methods=['GET', 'POST']) 
+def skill_set(id=0):
     skill_set = []
     
     table_instance = db_connect('skill_set')
