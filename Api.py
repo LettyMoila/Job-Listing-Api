@@ -332,3 +332,6 @@ def job_type_route():
     else:
         return 'No information about job type at the moment'
     
+
+if __name__ == "__main__":
+    app.run()
