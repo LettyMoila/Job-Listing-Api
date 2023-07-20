@@ -8,6 +8,8 @@ CREATE TABLE "client_profile" (
   "current_salary" varchar
 );
 
+
+
 CREATE TABLE "client_experience" (
   "client_id" integer,
   "current_job" varchar,
@@ -19,6 +21,10 @@ CREATE TABLE "client_experience" (
   "job_location_country" varchar,
   "description" varchar
 );
+
+
+
+
 
 CREATE TABLE "client_education" (
   "client_id" integer,
