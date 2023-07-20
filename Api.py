@@ -12,7 +12,7 @@ CORS(app)
 
 @app.route('/')
 def main():
-    return redirect('http://localhost:3000/')
+    return "Job Listing API"
 
 '''Client Routes and connections'''
 @app.route('/client_profile/<id>', methods=['GET', 'POST'])
