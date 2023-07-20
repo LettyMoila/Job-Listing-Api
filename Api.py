@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, request
-from flask_cors import CORS
+# from flask_cors import CORS
 from datetime import datetime
 import json
 
@@ -8,7 +8,7 @@ import config
 from db_connect import db_connect
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 @app.route('/')
 def main():
