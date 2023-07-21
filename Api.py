@@ -55,7 +55,7 @@ def client_profile_route(id=0):
         table_instance.insert("first_name, last_name, email, number,address,current_salary", 
                         f"'{first_name}','{last_name}','{email}', '{number}','{address}','{current_salary}'")
         
-        return redirect('http://localhost:3000/apply/client_education')
+        return redirect('https://job-listing-girlscode.onrender.com/apply/client_education')
     else:
         return 'Enter correct data'
 
@@ -105,7 +105,7 @@ def client_experience_route(id=0):
         table_instance.insert("current_job, start_date, end_date, company_name, job_location_city, job_location_state, job_location_country, description", 
                         f"'{current_job}','{start_date}','{end_date}', '{company_name}','{job_location_city}','{job_location_state}','{job_location_country}','{description}'")
         
-        return redirect('http://localhost:3000/jobs')
+        return redirect('https://job-listing-girlscode.onrender.com/apply/client_skills')
     else:
         return 'No client experience at the moment'
 
@@ -149,7 +149,7 @@ def client_education_route(id=0):
         table_instance.insert("certificate_name, major, institute_name, start_date, end_date", 
                         f"'{certificate_name}','{major}','{institute_name}', '{start_date}','{end_date}'")
         
-        return redirect('http://localhost:3000/apply/client_skills')
+        return redirect('https://job-listing-girlscode.onrender.com/apply/client_experience')
     else:
         return 'No client experience at the moment'
 
@@ -187,7 +187,7 @@ def client_skills(id=0):
         table_instance.insert("skill_level, skill_set",
                         f"'{skill_level}','{skill_set}'")
         
-        return redirect('http://localhost:3000/apply/thank_you')
+        return redirect('https://job-listing-girlscode.onrender.com/apply/thank_you')
     else:
         return 'No client experience at the moment'
     
@@ -232,7 +232,7 @@ def job_post_route():
         table_instance.insert("company_id, role, location, description,skill_set, created_at, closed_at",
                         f"'{company_id}','{role}','{description}','{skill_set}', '{location}','{created_at}','{closed_at}'")
         
-        return redirect('http://localhost:3000/')
+        return redirect('https://job-listing-girlscode.onrender.com/')
 
 
 
